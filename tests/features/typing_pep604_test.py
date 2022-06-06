@@ -195,6 +195,14 @@ def f(x: int | str) -> None: ...
 
             id='nested unions',
         ),
+        pytest.param(
+            'from typing import Optional\n'
+            'a: dict[str, Optional[str]]\n',
+
+            'a: dict[str, str | None]\n',
+
+            id='nested unions',
+        ),
     ),
 )
 def test_fix_pep604_types(s, expected):
